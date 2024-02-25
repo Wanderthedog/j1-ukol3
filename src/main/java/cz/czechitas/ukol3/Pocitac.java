@@ -5,7 +5,7 @@ import java.util.Objects;
     public class Pocitac {
         private boolean jeZapnuty;
         private Procesor cpu;
-        private Pamet ram = null;
+        private Pamet ram;
         private Disk pevnyDisk;
 
 
@@ -22,9 +22,6 @@ import java.util.Objects;
         }
 
         public void setRam(Pamet ram) {
-            if (ram == null){
-                System.err.println("Nelze zapnout, chybí procesor");
-            }
             this.ram = ram;
         }
 
@@ -37,14 +34,24 @@ import java.util.Objects;
         }
 
              public void zapniSe() {
-            jeZapnuty = true;
-
-        }
+                 if (ram == null) {
+                     System.err.println("Nelze zapnout, chybí pamet.");
+                     return;
+                 } else {
+                     jeZapnuty = false;
+                     System.out.println("Pocitac zapnutý.");
+                 }
+             }
 
         public void vypniSe() {
-            jeZapnuty = false;
-
+            if (!jeZapnuty) {
+                return;
+            } else {
+                jeZapnuty = false;
+                System.out.println("Pocitac byl vypnut.");
+            }
         }
+
 
         @Override
         public String toString() {
