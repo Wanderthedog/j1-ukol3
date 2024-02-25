@@ -1,72 +1,60 @@
 package cz.czechitas.ukol3;
 
+import java.util.Objects;
 
-public class Pocitac {
-    private boolean jeZapnuty = false;
-    private Procesor cpu;
-    private Pamet ram;
-    private Disk pevnyDisk;
+    public class Pocitac {
+        private boolean jeZapnuty;
+        private Procesor cpu;
+        private Pamet ram = null;
+        private Disk pevnyDisk;
 
-    public boolean jeZapnuty() {
-        return jeZapnuty;
-    }
 
-    public void zapniSe() {
-        if (jeZapnuty) {
-            System.err.println("Chyba: Počítač je již zapnutý.");
-            return;
+        public Procesor getCpu() {
+            return cpu;
         }
 
-        if (cpu == null || ram == null || pevnyDisk == null) {
-            System.out.println("Chyba: Nelze zapnout počítač - chybí procesor, paměť nebo disk.");
-            return;
+        public void setCpu(Procesor cpu) {
+            this.cpu = cpu;
         }
 
-        jeZapnuty = true;
-        System.out.println("Počítač se zapnul.");
-    }
-
-    public void vypniSe() {
-        if (!jeZapnuty) {
-            // Počítač již je vypnutý, ignorujeme opakované vypínání
-            return;
+        public Pamet getRam() {
+            return ram;
         }
 
-        jeZapnuty = false;
-        System.out.println("Počítač se vypnul.");
-    }
+        public void setRam(Pamet ram) {
+            if (ram == null){
+                System.err.println("Nelze zapnout, chybí procesor");
+            }
+            this.ram = ram;
+        }
 
-    public Procesor getCpu() {
-        return cpu;
-    }
+        public Disk getPevnyDisk() {
+            return pevnyDisk;
+        }
 
-    public void setCpu(Procesor cpu) {
-        this.cpu = cpu;
-    }
+        public void setPevnyDisk(Disk pevnyDisk) {
+            this.pevnyDisk = pevnyDisk;
+        }
 
-    public Pamet getRam() {
-        return ram;
-    }
+             public void zapniSe() {
+            jeZapnuty = true;
 
-    public void setRam(Pamet ram) {
-        this.ram = ram;
-    }
+        }
 
-    public Disk getPevnyDisk() {
-        return pevnyDisk;
-    }
+        public void vypniSe() {
+            jeZapnuty = false;
 
-    public void setPevnyDisk(Disk pevnyDisk) {
-        this.pevnyDisk = pevnyDisk;
-    }
+        }
 
-    @Override
-    public String toString() {
-        String stav = jeZapnuty ? "zapnutý" : "vypnutý";
-
-        return "Stav počítače: " + stav + "\n" +
-                "Procesor: " + (cpu != null ? cpu.toString() : "Procesor není nainstalován") + "\n" +
-                "Paměť: " + (ram != null ? ram.toString() : "Paměť není nainstalována") + "\n" +
-                "Pevný disk: " + (pevnyDisk != null ? pevnyDisk.toString() : "Pevný disk není nainstalován");
+        @Override
+        public String toString() {
+            if (jeZapnuty) {
+                return "Počítač: zapnutý";
+            } else {
+                return "Počítač: vypnutý";
+            }
+        }
+            public boolean JeZapnuty() {
+                return jeZapnuty;
+            }
     }
-}

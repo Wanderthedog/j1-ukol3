@@ -2,9 +2,9 @@ package cz.czechitas.ukol3;
 import java.util.Objects;
 
 public class Procesor {
-    private String vyrobce;
+    public String vyrobce;
 
-    private long rychlost;
+    public long rychlost;
 
     public Procesor() {
     }
