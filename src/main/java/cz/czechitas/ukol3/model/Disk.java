@@ -1,4 +1,4 @@
-package cz.czechitas.ukol3;
+package cz.czechitas.ukol3.model;
 
 public class Disk {
     private long kapacita;
@@ -25,11 +25,15 @@ public class Disk {
     }
 
     public void setVyuziteMisto(long vyuziteMisto) {
-        this.vyuziteMisto = vyuziteMisto;
+        if (vyuziteMisto >= 0 && vyuziteMisto <= kapacita) {
+            this.vyuziteMisto = vyuziteMisto;
+        } else {
+            System.err.println("Pokoušíte se využít zápornou nebo větší kapacitu disku");
+        }
     }
 
     @Override
     public String toString() {
-        return "Disk: kapacita je " + kapacita + "B " + " a vyuzite misto je " + vyuziteMisto+"B";
+        return "Disk: kapacita je " + kapacita + "B " + " a vyuzite misto je " + vyuziteMisto + "B";
     }
 }

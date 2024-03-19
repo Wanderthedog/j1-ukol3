@@ -1,10 +1,11 @@
-package cz.czechitas.ukol3;
+package cz.czechitas.ukol3.model;
+
 import java.util.Objects;
 
 public class Procesor {
-    public String vyrobce;
+    private String vyrobce;
 
-    public long rychlost;
+    private long rychlost;
 
     public Procesor() {
     }
@@ -19,11 +20,7 @@ public class Procesor {
     }
 
     public void setVyrobce(String vyrobce) {
-        this.vyrobce = Objects.requireNonNull(vyrobce);
-        if (vyrobce.isBlank()) {
-            System.err.println("Vyrobce musi byt vyplnen.");
-            return;
-        }
+        this.vyrobce = vyrobce;
     }
 
     public long getRychlost() {
@@ -35,12 +32,10 @@ public class Procesor {
     }
 
     @Override
-
     public String toString() {
-            if (vyrobce == null || vyrobce.isEmpty()){
-            return "Procesor: vyrobce je neznámý, rychlost je " + rychlost + " Hz";
-        } else {
-            return "Procesor: vyrobce je " + vyrobce + ", rychlost je " + rychlost + " Hz";
-        }
+        return "Procesor{" +
+                "vyrobce='" + vyrobce + '\'' +
+                ", rychlost=" + rychlost +
+                '}';
     }
 }

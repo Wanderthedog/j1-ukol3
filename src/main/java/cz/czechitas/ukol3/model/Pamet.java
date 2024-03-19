@@ -1,8 +1,8 @@
-package cz.czechitas.ukol3;
+package cz.czechitas.ukol3.model;
 
 
 public class Pamet {
-    public long kapacita;
+    private long kapacita;
 
     public Pamet() {
     }
