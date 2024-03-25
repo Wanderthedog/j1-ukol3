@@ -11,9 +11,8 @@ import cz.czechitas.ukol3.model.Procesor;
 public class HlavniProgram {
 
     public static void main(String... args) {
-        //TODO tady bude váš kód - vytvoření instance třídy Pocitac, zapnutí, vpynutí, výpis hodnot.
+        // vytvoření instance třídy Pocitac, zapnutí, vpynutí, výpis hodnot.
         System.out.println("Program spuštěn.");//info o spusteni
-
 
         //PAMET
         Pamet janaPamet = new Pamet();
@@ -26,13 +25,11 @@ public class HlavniProgram {
         janaProcesor.setVyrobce("Lenovo");
         System.out.println(janaProcesor);
 
-
         //DISK
         Disk janaDisk = new Disk();
         janaDisk.setKapacita(510_770_802_688L);
         janaDisk.setVyuziteMisto(121_343_635L);
         System.out.println(janaDisk);
-
 
         //POCITAC
         Pocitac janaPocitac = new Pocitac();

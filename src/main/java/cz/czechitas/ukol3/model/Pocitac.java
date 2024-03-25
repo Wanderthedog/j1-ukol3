@@ -6,11 +6,9 @@ public class Pocitac {
     private Pamet ram;
     private Disk pevnyDisk;
 
-
     public Procesor getCpu() {
         return cpu;
     }
-
 
     public void setCpu(Procesor cpu) {
         this.cpu = cpu;
@@ -48,20 +46,21 @@ public class Pocitac {
         long vyuziteMistoPredMazanimSouboru = pevnyDisk.getVyuziteMisto();
         long vyuziteMistoPoMazaniSouboru = vyuziteMistoPredMazanimSouboru - velikost;
         pevnyDisk.setVyuziteMisto(vyuziteMistoPoMazaniSouboru);
-
     }
 
     public void zapniSe() {
+        if (jeZapnuty) {
+            System.out.println("Pocitac je jiz zapnut.");
+            return; // Pokud je počítač již zapnutý, neprovádí žádné další akce
+        }
         if (ram == null) {
             System.err.println("Nelze zapnout, chybí pamet.");
         }
         if (cpu == null) {
             System.err.println("Nelze zapnout, chybí procesor.");
-
         }
         if (pevnyDisk == null) {
             System.err.println("Nelze zapnout, chybí disk.");
-
         } else {
             jeZapnuty = true;
             System.out.println("Pocitac byl zapnut.");
@@ -74,7 +73,6 @@ public class Pocitac {
             System.out.println("Pocitac byl vypnut.");
         }
     }
-
 
     @Override
     public String toString() {
