@@ -49,24 +49,27 @@ public class Pocitac {
     }
 
     public void zapniSe() {
+        // Pokud je počítač již zapnutý, nelze znovu zapnout
         if (jeZapnuty) {
             System.out.println("Pocitac je jiz zapnut.");
-            return; // Pokud je počítač již zapnutý, neprovádí žádné další akce
+            return;
         }
+        // Pokud chybí paměť, nelze počítač zapnout
         if (ram == null) {
+            jeZapnuty = false;
             System.err.println("Nelze zapnout, chybí pamet.");
+            return;
         }
-        if (cpu == null) {
-            System.err.println("Nelze zapnout, chybí procesor.");
+        // Pokud chybí další komponenty, nelze zabnout
+        if (cpu == null || pevnyDisk == null) {
+            jeZapnuty = false;
+            System.err.println("Nelze zapnout, chybí některá komponenta (procesor, disk).");
+            return;
         }
-        if (pevnyDisk == null) {
-            System.err.println("Nelze zapnout, chybí disk.");
-        } else {
-            jeZapnuty = true;
-            System.out.println("Pocitac byl zapnut.");
-        }
+        // Pokud nechybí komponenty, PC se zapne
+        jeZapnuty = true;
+        System.out.println("Pocitac byl zapnut.");
     }
-
     public void vypniSe() {
         if (jeZapnuty) {
             jeZapnuty = false;

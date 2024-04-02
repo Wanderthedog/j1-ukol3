@@ -39,7 +39,6 @@ public class HlavniProgram {
 
         //nastaveni PC
         janaPocitac.setCpu(janaProcesor);
-        janaPocitac.setRam(janaPamet);
         janaPocitac.setPevnyDisk(janaDisk);
         System.out.println(janaPocitac);
 
